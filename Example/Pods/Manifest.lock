@@ -1,0 +1,22 @@
+PODS:
+  - Expecta (1.0.6)
+  - GRUIKit (0.1.0)
+  - Specta (1.0.7)
+
+DEPENDENCIES:
+  - Expecta
+  - GRUIKit (from `../`)
+  - Specta
+
+EXTERNAL SOURCES:
+  GRUIKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  GRUIKit: cfe94f201585b13dcbbe15a62a017afdea193bb1
+  Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
+
+PODFILE CHECKSUM: ca64f185fdaaaa1a66679938a54982479e30e45d
+
+COCOAPODS: 1.2.1

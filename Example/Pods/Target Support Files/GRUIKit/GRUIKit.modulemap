@@ -1,0 +1,6 @@
+framework module GRUIKit {
+  umbrella header "GRUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

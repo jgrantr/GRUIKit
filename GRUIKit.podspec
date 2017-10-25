@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'GRUIKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of GRUIKit.'
+  s.summary          = 'Helpful code for building UI's'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,13 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+A few useful UI-related classes (including a number of designable classes) to make UI design in
+InterfaceBuilder more productive.
                        DESC
 
   s.homepage         = 'https://github.com/jgrantr/GRUIKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'jgrantr' => 'grant@zayda.com' }
+  s.author           = { 'Grant Robinson' => 'grant@zayda.com' }
   s.source           = { :git => 'https://github.com/jgrantr/GRUIKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -36,7 +37,7 @@ TODO: Add long description of the pod here.
   #   'GRUIKit' => ['GRUIKit/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.public_header_files = 'GRUIKit/Classes/**/GR*.h'
+  s.frameworks = 'UIKit', 'Foundation'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

@@ -1,0 +1,22 @@
+{
+  "name": "GRUIKit",
+  "version": "0.1.0",
+  "summary": "A short description of GRUIKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/jgrantr/GRUIKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "jgrantr": "grant@zayda.com"
+  },
+  "source": {
+    "git": "https://github.com/jgrantr/GRUIKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "GRUIKit/Classes/**/*"
+}

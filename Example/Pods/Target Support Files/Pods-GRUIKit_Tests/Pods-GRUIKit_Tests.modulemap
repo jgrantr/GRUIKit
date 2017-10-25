@@ -1,0 +1,6 @@
+framework module Pods_GRUIKit_Tests {
+  umbrella header "Pods-GRUIKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
