@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'GRUIKit_Example' do
+  pod 'GRUIKit', :path => '../'
+
+  target 'GRUIKit_Tests' do
+    inherit! :search_paths
+
+    pod 'Specta'
+  pod 'Expecta'
+  end
+end
