@@ -11,10 +11,10 @@
 IB_DESIGNABLE
 @interface GRRoundedCornerView : UIView
 
-@property (nonatomic, assign) IBInspectable BOOL roundTopLeft;
-@property (nonatomic, assign) IBInspectable BOOL roundTopRight;
-@property (nonatomic, assign) IBInspectable BOOL roundBottomLeft;
-@property (nonatomic, assign) IBInspectable BOOL roundBottomRight;
+@property (nonatomic, assign) IBInspectable BOOL topLeftRounded;
+@property (nonatomic, assign) IBInspectable BOOL topRightRounded;
+@property (nonatomic, assign) IBInspectable BOOL bottomLeftRounded;
+@property (nonatomic, assign) IBInspectable BOOL bottomRightRounded;
 @property (nonatomic, assign) IBInspectable CGFloat radius;
 @property (nonatomic, strong) IBInspectable UIColor *topColor;
 @property (nonatomic, strong) IBInspectable UIColor *bottomColor;

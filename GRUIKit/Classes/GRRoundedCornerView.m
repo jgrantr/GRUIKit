@@ -53,6 +53,58 @@
 	[self setNeedsDisplay];
 }
 
+- (void) setTopLeftRounded:(BOOL)topLeftRounded {
+	[self willChangeValueForKey:@"topLeftRounded"];
+	_topLeftRounded = topLeftRounded;
+	[self didChangeValueForKey:@"topLeftRounded"];
+	if (topLeftRounded) {
+		cornersToRound |= UIRectCornerTopLeft;
+	}
+	else {
+		cornersToRound &= ~(UIRectCornerTopLeft);
+	}
+	[self updateShapeLayer];
+}
+
+- (void) setTopRightRounded:(BOOL)topRightRounded {
+	[self willChangeValueForKey:@"topRightRounded"];
+	_topRightRounded = topRightRounded;
+	[self didChangeValueForKey:@"topRightRounded"];
+	if (topRightRounded) {
+		cornersToRound |= UIRectCornerTopRight;
+	}
+	else {
+		cornersToRound &= ~(UIRectCornerTopRight);
+	}
+	[self updateShapeLayer];
+}
+
+- (void) setBottomLeftRounded:(BOOL)bottomLeftRounded {
+	[self willChangeValueForKey:@"bottomLeftRounded"];
+	_bottomLeftRounded = bottomLeftRounded;
+	[self didChangeValueForKey:@"bottomLeftRounded"];
+	if (bottomLeftRounded) {
+		cornersToRound |= UIRectCornerBottomLeft;
+	}
+	else {
+		cornersToRound &= ~(UIRectCornerBottomLeft);
+	}
+	[self updateShapeLayer];
+}
+
+- (void) setBottomRightRounded:(BOOL)bottomRightRounded {
+	[self willChangeValueForKey:@"bottomRightRounded"];
+	_bottomRightRounded = bottomRightRounded;
+	[self didChangeValueForKey:@"bottomRightRounded"];
+	if (bottomRightRounded) {
+		cornersToRound |= UIRectCornerBottomRight;
+	}
+	else {
+		cornersToRound &= ~(UIRectCornerBottomRight);
+	}
+	[self updateShapeLayer];
+}
+
 - (void) setRadius:(CGFloat)_radius {
 	[self willChangeValueForKey:@"radius"];
 	radius = _radius;
@@ -88,18 +140,9 @@
 }
 
 - (void) updateShapeLayer {
-	BOOL roundTop = YES, roundBottom = YES;
 //	maskLayer.frame = self.bounds;
-	if (roundTop && roundBottom) {
-		maskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(radius, radius)].CGPath;
-		self.layer.mask = maskLayer;
-	}
-	else if (roundTop) {
-		maskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(radius, radius)].CGPath;
-		self.layer.mask = maskLayer;
-	}
-	else if (roundBottom) {
-		maskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:CGSizeMake(radius, radius)].CGPath;
+	if (_bottomRightRounded || _bottomLeftRounded || _topLeftRounded || _topRightRounded) {
+		maskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:cornersToRound cornerRadii:CGSizeMake(radius, radius)].CGPath;
 		self.layer.mask = maskLayer;
 	}
 	else {
