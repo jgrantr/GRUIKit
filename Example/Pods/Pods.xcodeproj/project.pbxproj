@@ -66,6 +66,8 @@
 		8F990515E868D90C15D2148DD1A22403 /* EXPMatchers+haveCountOf.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E20292CF7B63EA8E98399EF2352F73D /* EXPMatchers+haveCountOf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FE83533089CE254E58143C12620C0BF /* GRUIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EC7E03C2C0FD1D1262454EC5B1E3DDCA /* GRUIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92339D924C3FE0D3F3FA10084B1FE76C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D8173434FE00016739EAFDEFEA9313 /* Foundation.framework */; };
+		93875A641FA27693001D9563 /* GRRoundedCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93875A631FA27693001D9563 /* GRRoundedCornerView.m */; };
+		93875A651FA27697001D9563 /* GRRoundedCornerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 93875A621FA27693001D9563 /* GRRoundedCornerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93CDF3ED1FA14DD2005F41D3 /* GRChevronButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 93CDF3EB1FA14DD2005F41D3 /* GRChevronButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93CDF3EE1FA14DD2005F41D3 /* GRChevronButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CDF3EC1FA14DD2005F41D3 /* GRChevronButton.m */; };
 		93CDF3F01FA14E41005F41D3 /* GRUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 93CDF3EF1FA14E41005F41D3 /* GRUIKit.h */; };
@@ -231,6 +233,8 @@
 		8FF67CD313329AC05B39AE251B5EA5BB /* SpectaDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SpectaDSL.h; path = Specta/Specta/SpectaDSL.h; sourceTree = "<group>"; };
 		91D17A7188630D4CFFDF216D1B20AD98 /* EXPMatchers+beGreaterThan.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beGreaterThan.m"; path = "Expecta/Matchers/EXPMatchers+beGreaterThan.m"; sourceTree = "<group>"; };
 		924BF15B0F1D99CAD6E46F0030F50C50 /* ExpectaSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ExpectaSupport.m; path = Expecta/ExpectaSupport.m; sourceTree = "<group>"; };
+		93875A621FA27693001D9563 /* GRRoundedCornerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRRoundedCornerView.h; sourceTree = "<group>"; };
+		93875A631FA27693001D9563 /* GRRoundedCornerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GRRoundedCornerView.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93B613869003A3D21F03ECEADC589822 /* EXPMatchers+beNil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beNil.m"; path = "Expecta/Matchers/EXPMatchers+beNil.m"; sourceTree = "<group>"; };
 		93CDF3EB1FA14DD2005F41D3 /* GRChevronButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRChevronButton.h; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 		2D2350DA00C28682BCA58992B25B8108 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				93875A621FA27693001D9563 /* GRRoundedCornerView.h */,
+				93875A631FA27693001D9563 /* GRRoundedCornerView.m */,
 				93CDF3EB1FA14DD2005F41D3 /* GRChevronButton.h */,
 				93CDF3EC1FA14DD2005F41D3 /* GRChevronButton.m */,
 				93CDF3EF1FA14E41005F41D3 /* GRUIKit.h */,
@@ -649,6 +655,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93875A651FA27697001D9563 /* GRRoundedCornerView.h in Headers */,
 				8FE83533089CE254E58143C12620C0BF /* GRUIKit-umbrella.h in Headers */,
 				93CDF3ED1FA14DD2005F41D3 /* GRChevronButton.h in Headers */,
 				93CDF3F01FA14E41005F41D3 /* GRUIKit.h in Headers */,
@@ -936,6 +943,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BEF38DD049D95434E6C5A39495B5B70 /* GRUIKit-dummy.m in Sources */,
+				93875A641FA27693001D9563 /* GRRoundedCornerView.m in Sources */,
 				93CDF3EE1FA14DD2005F41D3 /* GRChevronButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
