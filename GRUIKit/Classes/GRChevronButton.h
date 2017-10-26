@@ -22,5 +22,6 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable CGFloat lineWidth;
 @property (nonatomic, assign) IBInspectable CGSize size;
 @property (nonatomic, assign) IBInspectable NSInteger direction;
+@property (nonatomic, assign) IBInspectable CGFloat cornerRadius;
 
 @end

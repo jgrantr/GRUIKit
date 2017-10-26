@@ -8,6 +8,16 @@
 
 #import "GRChevronButton.h"
 
+@interface GRChevronButton () {
+	UIBezierPath *path;
+	CAShapeLayer *shapeLayer;
+}
+
+- (void) commonInit;
+- (void) updatePath;
+
+@end
+
 @implementation GRChevronButton
 
 @synthesize size;
@@ -15,29 +25,63 @@
 - (id) initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
-		[self setNeedsDisplay];
+		[self commonInit];
 	}
 	return self;
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		[self commonInit];
+	}
+	return self;
+}
+
+- (id) init {
+	self = [super init];
+	if (self) {
+		[self commonInit];
+	}
+	return self;
+}
+
+- (void) commonInit {
+	self.clipsToBounds = YES;
+	[self setNeedsDisplay];
+	shapeLayer = [CAShapeLayer layer];
+	shapeLayer.frame = self.bounds;
+	shapeLayer.fillColor = [UIColor clearColor].CGColor;
+	shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
+	[self.layer addSublayer:shapeLayer];
+}
+
+- (void) setBounds:(CGRect)bounds {
+	[super setBounds:bounds];
+	shapeLayer.frame = self.bounds;
 }
 
 - (void) setLineColor:(UIColor *)lineColor {
 	[self willChangeValueForKey:@"lineColor"];
 	_lineColor = lineColor;
 	[self didChangeValueForKey:@"lineColor"];
-	[self setNeedsDisplay];
+	shapeLayer.strokeColor = _lineColor.CGColor;
+	[shapeLayer setNeedsDisplay];
 }
 
 - (void) setLineWidth:(CGFloat)lineWidth {
-	[self willChangeValueForKey:@"lineColor"];
+	[self willChangeValueForKey:@"lineWidth"];
 	_lineWidth = lineWidth;
-	[self didChangeValueForKey:@"lineColor"];
-	[self setNeedsDisplay];
+	[self didChangeValueForKey:@"lineWidth"];
+	shapeLayer.lineWidth = lineWidth;
+	[shapeLayer setNeedsDisplay];
 }
 
 - (void) setSize:(CGSize)_size {
 	[self willChangeValueForKey:@"size"];
 	size = _size;
 	[self didChangeValueForKey:@"size"];
+	[self updatePath];
 	[self setNeedsDisplay];
 }
 
@@ -50,38 +94,51 @@
 		_direction = GRCheveronRight;
 	}
 	[self didChangeValueForKey:@"direction"];
+	[self updatePath];
 	[self setNeedsDisplay];
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
-	CGContextSetStrokeColorWithColor(ctx, self.lineColor.CGColor);
-	CGContextSetLineWidth(ctx, self.lineWidth);
-	
-	CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-	CGContextBeginPath(ctx);
+- (void) setCornerRadius:(CGFloat)cornerRadius {
+	[self willChangeValueForKey:@"cornerRadius"];
+	self.layer.cornerRadius = cornerRadius;
+	[self didChangeValueForKey:@"cornerRadius"];
+	[self setNeedsDisplay];
+}
+
+- (CGFloat) cornerRadius {
+	return self.layer.cornerRadius;
+}
+
+- (void) updatePath {
+	path = [UIBezierPath bezierPath];
 	GRChevronDirection direction = self.direction;
+	CGRect rect = self.bounds;
+	CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 	switch (direction) {
 		case GRCheveronRight:
-			CGContextMoveToPoint(ctx, center.x - (size.width / 2.0), center.y - (size.height / 2.0));
-			CGContextAddLineToPoint(ctx, center.x + (size.width / 2.0), center.y);
-			CGContextAddLineToPoint(ctx, center.x - (size.width / 2.0), center.y + (size.height / 2.0));
+			[path moveToPoint:CGPointMake(center.x - (size.width / 2.0), center.y - (size.height / 2.0))];
+			[path addLineToPoint:CGPointMake(center.x + (size.width / 2.0), center.y)];
+			[path addLineToPoint:CGPointMake(center.x - (size.width / 2.0), center.y + (size.height /2.0))];
 			break;
 		case GRChevronLeft:
-			CGContextMoveToPoint(ctx, center.x + (size.width / 2.0), center.y - (size.height / 2.0));
-			CGContextAddLineToPoint(ctx, center.x - (size.width / 2.0), center.y);
-			CGContextAddLineToPoint(ctx, center.x + (size.width / 2.0), center.y + (size.height / 2.0));
+			[path moveToPoint:CGPointMake(center.x + (size.width / 2.0), center.y - (size.height / 2.0))];
+			[path addLineToPoint:CGPointMake(center.x - (size.width / 2.0), center.y)];
+			[path addLineToPoint:CGPointMake(center.x + (size.width / 2.0), center.y + (size.height / 2.0))];
 			break;
 		case GRChevronUp:
+			[path moveToPoint:CGPointMake(center.x - (size.width / 2.0), center.y + (size.height / 2.0))];
+			[path addLineToPoint:CGPointMake(center.x, center.y - (size.height / 2.0))];
+			[path addLineToPoint:CGPointMake(center.x + (size.width / 2.0), center.y + (size.height / 2.0))];
 			break;
 		case GRChevronDown:
+			[path moveToPoint:CGPointMake(center.x - (size.width / 2.0), center.y - (size.height / 2.0))];
+			[path addLineToPoint:CGPointMake(center.x, center.y + (size.height / 2.0))];
+			[path addLineToPoint:CGPointMake(center.x + (size.width / 2.0), center.y - (size.height / 2.0))];
 			break;
 	}
-	CGContextStrokePath(ctx);
-
+	shapeLayer.path = path.CGPath;
+	[shapeLayer setNeedsDisplay];
 }
+
 
 @end
