@@ -11,6 +11,7 @@
 @interface GRChevronButton () {
 	UIBezierPath *path;
 	CAShapeLayer *shapeLayer;
+	CALayer *backgroundLayer;
 }
 
 - (void) commonInit;
@@ -20,7 +21,7 @@
 
 @implementation GRChevronButton
 
-@synthesize size;
+@synthesize size, backgroundSize, backgroundLayerColor;
 
 - (id) initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
@@ -54,11 +55,19 @@
 	shapeLayer.fillColor = [UIColor clearColor].CGColor;
 	shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
 	[self.layer addSublayer:shapeLayer];
+	backgroundLayer = nil;
+	backgroundLayerColor = nil;
+	backgroundSize = CGSizeZero;
 }
 
 - (void) setBounds:(CGRect)bounds {
 	[super setBounds:bounds];
-	shapeLayer.frame = self.bounds;
+	[self updateLayerSizes];
+}
+
+- (void) setFrame:(CGRect)frame {
+	[super setFrame:frame];
+	[self updateLayerSizes];
 }
 
 - (void) setLineColor:(UIColor *)lineColor {
@@ -109,8 +118,58 @@
 	return self.layer.cornerRadius;
 }
 
+- (void) setBackgroundSize:(CGSize)_backgroundSize {
+	[self willChangeValueForKey:@"backgroundSize"];
+	backgroundSize = _backgroundSize;
+	[self didChangeValueForKey:@"backgroundSize"];
+	[self updateBackgroundLayer];
+}
+
+- (void) setBackgroundLayerColor:(UIColor *)_backgroundLayerColor {
+	[self willChangeValueForKey:@"backgroundLayerColor"];
+	backgroundLayerColor = _backgroundLayerColor;
+	[self didChangeValueForKey:@"backgroundLayerColor"];
+	[self updateBackgroundLayer];
+}
+
+- (void) setBorderColor:(UIColor *)borderColor {
+	[self willChangeValueForKey:@"borderColor"];
+	_borderColor = borderColor;
+	[self didChangeValueForKey:@"borderColor"];
+	self.layer.borderColor = borderColor.CGColor;
+}
+
+- (void) setBorderWidth:(CGFloat)borderWidth {
+	[self willChangeValueForKey:@"borderWidth"];
+	self.layer.borderWidth = borderWidth;
+	[self didChangeValueForKey:@"borderWidth"];
+}
+
+- (CGFloat) borderWidth {
+	return self.layer.borderWidth;
+}
+
 - (CAShapeLayer *) chevronLayer {
 	return shapeLayer;
+}
+
+- (void) updateLayerSizes {
+	shapeLayer.frame = self.bounds;
+	backgroundLayer.frame = CGRectMake((self.bounds.size.width / 2.0) - (backgroundSize.width / 2.0), (self.bounds.size.height / 2.0) - (backgroundSize.height / 2.0), backgroundSize.width, backgroundSize.height);
+	backgroundLayer.cornerRadius = backgroundSize.width / 2.0;
+}
+
+- (void) updateBackgroundLayer {
+	if (backgroundLayerColor && !CGSizeEqualToSize(backgroundSize, CGSizeZero)) {
+		if (!backgroundLayer) {
+			backgroundLayer = [CALayer layer];
+			backgroundLayer.masksToBounds = YES;
+			[self.layer insertSublayer:backgroundLayer below:shapeLayer];
+		}
+		backgroundLayer.frame = CGRectMake((self.bounds.size.width / 2.0) - (backgroundSize.width / 2.0), (self.bounds.size.height / 2.0) - (backgroundSize.height / 2.0), backgroundSize.width, backgroundSize.height);
+		backgroundLayer.cornerRadius = backgroundSize.width / 2.0;
+		backgroundLayer.backgroundColor = backgroundLayerColor.CGColor;
+	}
 }
 
 - (void) updatePath {

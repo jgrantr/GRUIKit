@@ -24,6 +24,12 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable NSInteger direction;
 @property (nonatomic, assign) IBInspectable CGFloat cornerRadius;
 
+@property (nonatomic, strong) IBInspectable UIColor *borderColor;
+@property (nonatomic, assign) IBInspectable CGFloat borderWidth;
+
+@property (nonatomic, strong) IBInspectable UIColor *backgroundLayerColor;
+@property (nonatomic, assign) IBInspectable CGSize backgroundSize;
+
 @property (nonatomic, readonly) CAShapeLayer *chevronLayer;
 
 @end
