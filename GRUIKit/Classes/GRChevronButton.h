@@ -24,4 +24,6 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable NSInteger direction;
 @property (nonatomic, assign) IBInspectable CGFloat cornerRadius;
 
+@property (nonatomic, readonly) CAShapeLayer *chevronLayer;
+
 @end

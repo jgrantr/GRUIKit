@@ -109,6 +109,10 @@
 	return self.layer.cornerRadius;
 }
 
+- (CAShapeLayer *) chevronLayer {
+	return shapeLayer;
+}
+
 - (void) updatePath {
 	path = [UIBezierPath bezierPath];
 	GRChevronDirection direction = self.direction;
