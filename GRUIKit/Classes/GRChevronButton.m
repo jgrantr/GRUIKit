@@ -157,6 +157,7 @@
 	shapeLayer.frame = self.bounds;
 	backgroundLayer.frame = CGRectMake((self.bounds.size.width / 2.0) - (backgroundSize.width / 2.0), (self.bounds.size.height / 2.0) - (backgroundSize.height / 2.0), backgroundSize.width, backgroundSize.height);
 	backgroundLayer.cornerRadius = backgroundSize.width / 2.0;
+	[self setNeedsDisplay];
 }
 
 - (void) updateBackgroundLayer {
@@ -169,6 +170,7 @@
 		backgroundLayer.frame = CGRectMake((self.bounds.size.width / 2.0) - (backgroundSize.width / 2.0), (self.bounds.size.height / 2.0) - (backgroundSize.height / 2.0), backgroundSize.width, backgroundSize.height);
 		backgroundLayer.cornerRadius = backgroundSize.width / 2.0;
 		backgroundLayer.backgroundColor = backgroundLayerColor.CGColor;
+		[self setNeedsDisplay];
 	}
 }
 
