@@ -8,3 +8,4 @@
 #import <UIKit/UIKit.h>
 
 #import <GRUIKit/GRChevronButton.h>
+#import <GRUIKit/GRRoundedCornerView.h>
