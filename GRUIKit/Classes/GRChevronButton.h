@@ -30,6 +30,8 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *backgroundLayerColor;
 @property (nonatomic, assign) IBInspectable CGSize backgroundSize;
 
+@property (nonatomic, assign) IBInspectable BOOL closePath;
+
 @property (nonatomic, readonly) CAShapeLayer *chevronLayer;
 
 @end

@@ -21,7 +21,7 @@
 
 @implementation GRChevronButton
 
-@synthesize size, backgroundSize, backgroundLayerColor;
+@synthesize size, backgroundSize, backgroundLayerColor, closePath;
 
 - (id) initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
@@ -149,6 +149,18 @@
 	return self.layer.borderWidth;
 }
 
+- (void) setClosePath:(BOOL)_closePath {
+	[self willChangeValueForKey:@"closePath"];
+	closePath = _closePath;
+	[self didChangeValueForKey:@"closePath"];
+	if (closePath) {
+		shapeLayer.fillColor = self.lineColor.CGColor;
+	}
+	else {
+		shapeLayer.fillColor = [UIColor clearColor].CGColor;
+	}
+}
+
 - (CAShapeLayer *) chevronLayer {
 	return shapeLayer;
 }
@@ -200,6 +212,9 @@
 			[path addLineToPoint:CGPointMake(center.x, center.y + (size.height / 2.0))];
 			[path addLineToPoint:CGPointMake(center.x + (size.width / 2.0), center.y - (size.height / 2.0))];
 			break;
+	}
+	if (self.closePath) {
+		[path closePath];
 	}
 	shapeLayer.path = path.CGPath;
 	[shapeLayer setNeedsDisplay];
