@@ -54,9 +54,7 @@
 }
 
 - (void) setTopLeftRounded:(BOOL)topLeftRounded {
-	[self willChangeValueForKey:@"topLeftRounded"];
 	_topLeftRounded = topLeftRounded;
-	[self didChangeValueForKey:@"topLeftRounded"];
 	if (topLeftRounded) {
 		cornersToRound |= UIRectCornerTopLeft;
 	}
@@ -67,9 +65,7 @@
 }
 
 - (void) setTopRightRounded:(BOOL)topRightRounded {
-	[self willChangeValueForKey:@"topRightRounded"];
 	_topRightRounded = topRightRounded;
-	[self didChangeValueForKey:@"topRightRounded"];
 	if (topRightRounded) {
 		cornersToRound |= UIRectCornerTopRight;
 	}
@@ -80,9 +76,7 @@
 }
 
 - (void) setBottomLeftRounded:(BOOL)bottomLeftRounded {
-	[self willChangeValueForKey:@"bottomLeftRounded"];
 	_bottomLeftRounded = bottomLeftRounded;
-	[self didChangeValueForKey:@"bottomLeftRounded"];
 	if (bottomLeftRounded) {
 		cornersToRound |= UIRectCornerBottomLeft;
 	}
@@ -93,9 +87,7 @@
 }
 
 - (void) setBottomRightRounded:(BOOL)bottomRightRounded {
-	[self willChangeValueForKey:@"bottomRightRounded"];
 	_bottomRightRounded = bottomRightRounded;
-	[self didChangeValueForKey:@"bottomRightRounded"];
 	if (bottomRightRounded) {
 		cornersToRound |= UIRectCornerBottomRight;
 	}
@@ -106,9 +98,7 @@
 }
 
 - (void) setRadius:(CGFloat)_radius {
-	[self willChangeValueForKey:@"radius"];
 	radius = _radius;
-	[self didChangeValueForKey:@"radius"];
 	[self updateShapeLayer];
 }
 
@@ -119,25 +109,44 @@
 }
 
 - (void) setShowGradient:(BOOL)_showGradient {
-	[self willChangeValueForKey:@"showGradient"];
 	showGradient = _showGradient;
-	[self didChangeValueForKey:@"showGradient"];
 	[self updateGradient];
 }
 
 - (void) setTopColor:(UIColor *)_topColor {
-	[self willChangeValueForKey:@"topColor"];
 	topColor = _topColor;
-	[self didChangeValueForKey:@"topColor"];
 	[self updateGradient];
 }
 
 - (void) setBottomColor:(UIColor *)_bottomColor {
-	[self willChangeValueForKey:@"bottomColor"];
 	bottomColor = _bottomColor;
-	[self didChangeValueForKey:@"bottomColor"];
 	[self updateGradient];
 }
+
+- (void) setShadowColor:(UIColor *)shadowColor {
+	_shadowColor = shadowColor;
+	self.layer.shadowColor = shadowColor.CGColor;
+	[self setNeedsDisplay];
+}
+
+- (void) setShadowOffset:(CGSize)shadowOffset {
+	_shadowOffset = shadowOffset;
+	self.layer.shadowOffset = shadowOffset;
+	[self setNeedsDisplay];
+}
+
+- (void) setShadowRadius:(CGFloat)shadowRadius {
+	_shadowRadius = shadowRadius;
+	self.layer.shadowRadius = shadowRadius;
+	[self setNeedsDisplay];
+}
+
+- (void) setShadowOpacity:(float)shadowOpacity {
+	_shadowOpacity = shadowOpacity;
+	self.layer.shadowOpacity = shadowOpacity;
+	[self setNeedsDisplay];
+}
+
 
 - (void) updateShapeLayer {
 //	maskLayer.frame = self.bounds;

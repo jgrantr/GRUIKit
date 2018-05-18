@@ -20,4 +20,9 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *bottomColor;
 @property (nonatomic) IBInspectable BOOL showGradient;
 
+@property (nonatomic, strong) IBInspectable UIColor *shadowColor;
+@property (nonatomic) IBInspectable CGSize shadowOffset;
+@property (nonatomic) IBInspectable CGFloat shadowRadius;
+@property (nonatomic) IBInspectable float shadowOpacity;
+
 @end

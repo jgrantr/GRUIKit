@@ -71,38 +71,30 @@
 }
 
 - (void) setLineColor:(UIColor *)lineColor {
-	[self willChangeValueForKey:@"lineColor"];
 	_lineColor = lineColor;
-	[self didChangeValueForKey:@"lineColor"];
 	shapeLayer.strokeColor = _lineColor.CGColor;
 	[shapeLayer setNeedsDisplay];
 }
 
 - (void) setLineWidth:(CGFloat)lineWidth {
-	[self willChangeValueForKey:@"lineWidth"];
 	_lineWidth = lineWidth;
-	[self didChangeValueForKey:@"lineWidth"];
 	shapeLayer.lineWidth = lineWidth;
 	[shapeLayer setNeedsDisplay];
 }
 
 - (void) setSize:(CGSize)_size {
-	[self willChangeValueForKey:@"size"];
 	size = _size;
-	[self didChangeValueForKey:@"size"];
 	[self updatePath];
 	[self setNeedsDisplay];
 }
 
 - (void) setDirection:(NSInteger)direction {
-	[self willChangeValueForKey:@"direction"];
 	if (direction >= 1 && direction <= 4) {
 		_direction = direction;
 	}
 	else {
 		_direction = GRCheveronRight;
 	}
-	[self didChangeValueForKey:@"direction"];
 	[self updatePath];
 	[self setNeedsDisplay];
 }
@@ -118,24 +110,42 @@
 	return self.layer.cornerRadius;
 }
 
+- (void) setShadowColor:(UIColor *)shadowColor {
+	_shadowColor = shadowColor;
+	self.layer.shadowColor = shadowColor.CGColor;
+	[self setNeedsDisplay];
+}
+
+- (void) setShadowOffset:(CGSize)shadowOffset {
+	_shadowOffset = shadowOffset;
+	self.layer.shadowOffset = shadowOffset;
+	[self setNeedsDisplay];
+}
+
+- (void) setShadowRadius:(CGFloat)shadowRadius {
+	_shadowRadius = shadowRadius;
+	self.layer.shadowRadius = shadowRadius;
+	[self setNeedsDisplay];
+}
+
+- (void) setShadowOpacity:(float)shadowOpacity {
+	_shadowOpacity = shadowOpacity;
+	self.layer.shadowOpacity = shadowOpacity;
+	[self setNeedsDisplay];
+}
+
 - (void) setBackgroundSize:(CGSize)_backgroundSize {
-	[self willChangeValueForKey:@"backgroundSize"];
 	backgroundSize = _backgroundSize;
-	[self didChangeValueForKey:@"backgroundSize"];
 	[self updateBackgroundLayer];
 }
 
 - (void) setBackgroundLayerColor:(UIColor *)_backgroundLayerColor {
-	[self willChangeValueForKey:@"backgroundLayerColor"];
 	backgroundLayerColor = _backgroundLayerColor;
-	[self didChangeValueForKey:@"backgroundLayerColor"];
 	[self updateBackgroundLayer];
 }
 
 - (void) setBorderColor:(UIColor *)borderColor {
-	[self willChangeValueForKey:@"borderColor"];
 	_borderColor = borderColor;
-	[self didChangeValueForKey:@"borderColor"];
 	self.layer.borderColor = borderColor.CGColor;
 }
 
@@ -150,9 +160,7 @@
 }
 
 - (void) setClosePath:(BOOL)_closePath {
-	[self willChangeValueForKey:@"closePath"];
 	closePath = _closePath;
-	[self didChangeValueForKey:@"closePath"];
 	if (closePath) {
 		shapeLayer.fillColor = self.lineColor.CGColor;
 	}
