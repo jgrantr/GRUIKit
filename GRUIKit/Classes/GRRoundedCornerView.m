@@ -19,7 +19,7 @@
 
 @implementation GRRoundedCornerView
 
-@synthesize radius, showGradient, topColor, bottomColor;
+@synthesize radius, showGradient, topColor, bottomColor, middleColor;
 
 - (instancetype) initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
@@ -123,6 +123,11 @@
 	[self updateGradient];
 }
 
+- (void) setMiddleColor:(UIColor *)_middleColor {
+	middleColor = _middleColor;
+	[self updateGradient];
+}
+
 - (void) setShadowColor:(UIColor *)shadowColor {
 	_shadowColor = shadowColor;
 	self.layer.shadowColor = shadowColor.CGColor;
@@ -166,7 +171,12 @@
 		if (gradientLayer.superlayer == nil) {
 			[self.layer insertSublayer:gradientLayer atIndex:0];
 		}
-		gradientLayer.colors = @[(id)topColor.CGColor, (id)bottomColor.CGColor];
+		if (self.middleColor == nil) {
+			gradientLayer.colors = @[(id)topColor.CGColor, (id)bottomColor.CGColor];
+		}
+		else {
+			gradientLayer.colors = @[(id)topColor.CGColor, (id)middleColor.CGColor, (id) bottomColor.CGColor];
+		}
 		[self.layer setNeedsDisplay];
 	}
 }

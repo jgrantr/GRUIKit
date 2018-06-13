@@ -17,6 +17,7 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable BOOL bottomRightRounded;
 @property (nonatomic, assign) IBInspectable CGFloat radius;
 @property (nonatomic, strong) IBInspectable UIColor *topColor;
+@property (nonatomic, strong) IBInspectable UIColor *middleColor;
 @property (nonatomic, strong) IBInspectable UIColor *bottomColor;
 @property (nonatomic) IBInspectable BOOL showGradient;
 
