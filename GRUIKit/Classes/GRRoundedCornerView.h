@@ -16,10 +16,13 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable BOOL bottomLeftRounded;
 @property (nonatomic, assign) IBInspectable BOOL bottomRightRounded;
 @property (nonatomic, assign) IBInspectable CGFloat radius;
+
 @property (nonatomic, strong) IBInspectable UIColor *topColor;
 @property (nonatomic, strong) IBInspectable UIColor *middleColor;
 @property (nonatomic, strong) IBInspectable UIColor *bottomColor;
 @property (nonatomic) IBInspectable BOOL showGradient;
+@property (nonatomic, assign) IBInspectable CGPoint gradientStart;
+@property (nonatomic, assign) IBInspectable CGPoint gradientEnd;
 
 @property (nonatomic, strong) IBInspectable UIColor *shadowColor;
 @property (nonatomic) IBInspectable CGSize shadowOffset;

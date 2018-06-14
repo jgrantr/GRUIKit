@@ -19,7 +19,7 @@
 
 @implementation GRRoundedCornerView
 
-@synthesize radius, showGradient, topColor, bottomColor, middleColor;
+@synthesize radius, showGradient, topColor, bottomColor, middleColor, gradientStart, gradientEnd;
 
 - (instancetype) initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
@@ -50,6 +50,8 @@
 	radius = 5;
 	gradientLayer = [CAGradientLayer layer];
 	cornersToRound = 0;
+	gradientStart = CGPointMake(0.5, 0.0);
+	gradientEnd = CGPointMake(0.5, 1.0);
 	[self setNeedsDisplay];
 }
 
@@ -126,6 +128,18 @@
 - (void) setMiddleColor:(UIColor *)_middleColor {
 	middleColor = _middleColor;
 	[self updateGradient];
+}
+
+- (void) setGradientStart:(CGPoint)_gradientStart {
+	gradientStart = _gradientStart;
+	gradientLayer.startPoint = gradientStart;
+	[self.layer setNeedsDisplay];
+}
+
+- (void) setGradientEnd:(CGPoint)_gradientEnd {
+	gradientEnd = _gradientEnd;
+	gradientLayer.endPoint = gradientEnd;
+	[self.layer setNeedsDisplay];
 }
 
 - (void) setShadowColor:(UIColor *)shadowColor {
