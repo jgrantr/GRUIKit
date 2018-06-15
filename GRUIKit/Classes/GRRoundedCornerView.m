@@ -117,16 +117,19 @@
 
 - (void) setTopColor:(UIColor *)_topColor {
 	topColor = _topColor;
+	_colors = nil;
 	[self updateGradient];
 }
 
 - (void) setBottomColor:(UIColor *)_bottomColor {
 	bottomColor = _bottomColor;
+	_colors = nil;
 	[self updateGradient];
 }
 
 - (void) setMiddleColor:(UIColor *)_middleColor {
 	middleColor = _middleColor;
+	_colors = nil;
 	[self updateGradient];
 }
 
@@ -166,6 +169,14 @@
 	[self setNeedsDisplay];
 }
 
+- (void) setColors:(NSArray<UIColor *> *)colors {
+	_colors = colors;
+	topColor = nil;
+	middleColor = nil;
+	bottomColor = nil;
+	[self updateGradient];
+}
+
 
 - (void) updateShapeLayer {
 //	maskLayer.frame = self.bounds;
@@ -181,11 +192,18 @@
 
 - (void) updateGradient {
 	gradientLayer.frame = self.bounds;
-	if (showGradient && topColor && bottomColor) {
+	if (showGradient && (self.colors || (topColor && bottomColor))) {
 		if (gradientLayer.superlayer == nil) {
 			[self.layer insertSublayer:gradientLayer atIndex:0];
 		}
-		if (self.middleColor == nil) {
+		if (self.colors) {
+			NSMutableArray *transformed = [NSMutableArray arrayWithCapacity:self.colors.count];
+			for (UIColor *color in self.colors) {
+				[transformed addObject:(id)color.CGColor];
+			}
+			gradientLayer.colors = transformed;
+		}
+		else if (self.middleColor == nil) {
 			gradientLayer.colors = @[(id)topColor.CGColor, (id)bottomColor.CGColor];
 		}
 		else {
@@ -193,6 +211,43 @@
 		}
 		[self.layer setNeedsDisplay];
 	}
+}
+
++ (NSSet *) keyPathsForValuesAffectingTopColor {
+	static dispatch_once_t onceToken;
+	static NSSet *paths;
+	dispatch_once(&onceToken, ^{
+		paths = [NSSet setWithObject:@"colors"];
+	});
+	return paths;
+}
+
++ (NSSet *) keyPathsForValuesAffectingBottomColor {
+	static dispatch_once_t onceToken;
+	static NSSet *paths;
+	dispatch_once(&onceToken, ^{
+		paths = [NSSet setWithObject:@"colors"];
+	});
+	return paths;
+}
+
++ (NSSet *) keyPathsForValuesAffectingMiddleColor {
+	static dispatch_once_t onceToken;
+	static NSSet *paths;
+	dispatch_once(&onceToken, ^{
+		paths = [NSSet setWithObject:@"colors"];
+	});
+	return paths;
+}
+
++ (NSSet *) keyPathsForValuesAffectingColors {
+	static dispatch_once_t onceToken;
+	static NSSet *paths;
+	dispatch_once(&onceToken, ^{
+		paths = [NSSet setWithArray:@[NSStringFromSelector(@selector(topColor)), NSStringFromSelector(@selector(middleColor)), NSStringFromSelector(@selector(bottomColor))]];
+	});
+	return paths;
+
 }
 
 /*

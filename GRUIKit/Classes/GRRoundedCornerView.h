@@ -29,4 +29,10 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat shadowRadius;
 @property (nonatomic) IBInspectable float shadowOpacity;
 
+/**
+ If you need more than the three colors, you can specify them programatically.  They go in top to bottom order,
+ so index 0 is considered the topColor, and index (count - 1) is considered the bottom color
+ */
+@property (nonatomic, strong) NSArray<UIColor*> *colors;
+
 @end
