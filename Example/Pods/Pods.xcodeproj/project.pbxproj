@@ -71,6 +71,10 @@
 		93CDF3ED1FA14DD2005F41D3 /* GRChevronButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 93CDF3EB1FA14DD2005F41D3 /* GRChevronButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93CDF3EE1FA14DD2005F41D3 /* GRChevronButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CDF3EC1FA14DD2005F41D3 /* GRChevronButton.m */; };
 		93CDF3F01FA14E41005F41D3 /* GRUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 93CDF3EF1FA14E41005F41D3 /* GRUIKit.h */; };
+		93F75D1322F3816C00FDBA18 /* GRCheckBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 93F75D0F22F3816C00FDBA18 /* GRCheckBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		93F75D1422F3816C00FDBA18 /* GRCheckBoxLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 93F75D1022F3816C00FDBA18 /* GRCheckBoxLayer.h */; };
+		93F75D1522F3816C00FDBA18 /* GRCheckBoxLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F75D1122F3816C00FDBA18 /* GRCheckBoxLayer.m */; };
+		93F75D1622F3816C00FDBA18 /* GRCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F75D1222F3816C00FDBA18 /* GRCheckBox.m */; };
 		98571BE17A46245CA1717CF9157A0807 /* EXPMatchers+beTruthy.m in Sources */ = {isa = PBXBuildFile; fileRef = 408EA78FA928332DAE21B1527BCC7A2F /* EXPMatchers+beTruthy.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		99781866ADE0563D44B16FAD9C84FD1C /* XCTestCase+Specta.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE29471E8953384B36B17DC33FB8C75 /* XCTestCase+Specta.m */; };
 		99E6D51A8A4E3FFB7601D182D995A3BA /* ExpectaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4D33F041C8104408EC5CD85F30D247 /* ExpectaObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -240,6 +244,10 @@
 		93CDF3EB1FA14DD2005F41D3 /* GRChevronButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRChevronButton.h; sourceTree = "<group>"; };
 		93CDF3EC1FA14DD2005F41D3 /* GRChevronButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRChevronButton.m; sourceTree = "<group>"; };
 		93CDF3EF1FA14E41005F41D3 /* GRUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GRUIKit.h; sourceTree = "<group>"; };
+		93F75D0F22F3816C00FDBA18 /* GRCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCheckBox.h; sourceTree = "<group>"; };
+		93F75D1022F3816C00FDBA18 /* GRCheckBoxLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRCheckBoxLayer.h; sourceTree = "<group>"; };
+		93F75D1122F3816C00FDBA18 /* GRCheckBoxLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCheckBoxLayer.m; sourceTree = "<group>"; };
+		93F75D1222F3816C00FDBA18 /* GRCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCheckBox.m; sourceTree = "<group>"; };
 		9481427DF2902DFFCDC09936E3C52C6F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9752E31871E7FF75AE0001D3CC85954B /* Pods-GRUIKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GRUIKit_Example-dummy.m"; sourceTree = "<group>"; };
 		983F42157C09B24C95033E6A987BBF22 /* EXPMatchers+beLessThan.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beLessThan.m"; path = "Expecta/Matchers/EXPMatchers+beLessThan.m"; sourceTree = "<group>"; };
@@ -401,6 +409,10 @@
 		2D2350DA00C28682BCA58992B25B8108 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				93F75D0F22F3816C00FDBA18 /* GRCheckBox.h */,
+				93F75D1222F3816C00FDBA18 /* GRCheckBox.m */,
+				93F75D1022F3816C00FDBA18 /* GRCheckBoxLayer.h */,
+				93F75D1122F3816C00FDBA18 /* GRCheckBoxLayer.m */,
 				93875A621FA27693001D9563 /* GRRoundedCornerView.h */,
 				93875A631FA27693001D9563 /* GRRoundedCornerView.m */,
 				93CDF3EB1FA14DD2005F41D3 /* GRChevronButton.h */,
@@ -655,9 +667,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F75D1422F3816C00FDBA18 /* GRCheckBoxLayer.h in Headers */,
 				93875A651FA27697001D9563 /* GRRoundedCornerView.h in Headers */,
 				8FE83533089CE254E58143C12620C0BF /* GRUIKit-umbrella.h in Headers */,
 				93CDF3ED1FA14DD2005F41D3 /* GRChevronButton.h in Headers */,
+				93F75D1322F3816C00FDBA18 /* GRCheckBox.h in Headers */,
 				93CDF3F01FA14E41005F41D3 /* GRUIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,6 +859,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
@@ -943,7 +958,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BEF38DD049D95434E6C5A39495B5B70 /* GRUIKit-dummy.m in Sources */,
+				93F75D1522F3816C00FDBA18 /* GRCheckBoxLayer.m in Sources */,
 				93875A641FA27693001D9563 /* GRRoundedCornerView.m in Sources */,
+				93F75D1622F3816C00FDBA18 /* GRCheckBox.m in Sources */,
 				93CDF3EE1FA14DD2005F41D3 /* GRChevronButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

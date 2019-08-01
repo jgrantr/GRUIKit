@@ -9,3 +9,4 @@
 
 #import <GRUIKit/GRChevronButton.h>
 #import <GRUIKit/GRRoundedCornerView.h>
+#import <GRUIKit/GRCheckBox.h>
